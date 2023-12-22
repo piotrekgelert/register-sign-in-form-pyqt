@@ -1,0 +1,20 @@
+<RCC>
+  <qresource prefix="main">
+    <file>admin_thumb.png</file>
+  </qresource>
+  <qresource prefix="buttons">
+    <file>A.png</file>
+    <file>Q.png</file>
+    <file>faq.png</file>
+    <file>question.png</file>
+    <file>key.png</file>
+    <file>cross_thumb.png</file>
+    <file>locked.png</file>
+    <file>logout.png</file>
+    <file>protection.png</file>
+    <file>refresh.png</file>
+    <file>success_thumb.png</file>
+    <file>user.png</file>
+    <file>unlocked.png</file>
+  </qresource>
+</RCC>
