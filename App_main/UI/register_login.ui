@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>675</width>
-    <height>450</height>
+    <width>664</width>
+    <height>456</height>
    </rect>
   </property>
   <property name="font">
@@ -22,6 +22,10 @@
   <property name="windowTitle">
    <string>Register_Login</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../../App_icons/resource_icons.qrc">
+    <normaloff>:/main/admin_thumb.png</normaloff>:/main/admin_thumb.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
@@ -29,137 +33,223 @@
       <x>150</x>
       <y>20</y>
       <width>501</width>
-      <height>411</height>
+      <height>421</height>
      </rect>
     </property>
     <property name="focusPolicy">
      <enum>Qt::StrongFocus</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
-    <widget class="QWidget" name="pg_login">
-     <widget class="QGroupBox" name="gb_login">
+    <widget class="QWidget" name="pg_welcome">
+     <widget class="QLabel" name="lb_main_logo">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>471</width>
-        <height>121</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Log in</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>30</y>
-         <width>451</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="hl_login_username">
-        <item>
-         <widget class="QLabel" name="lb_login_email_icon">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="pixmap">
-           <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/user.png</pixmap>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lb_login_email">
-          <property name="text">
-           <string>Email:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="le_login_username"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>70</y>
-         <width>451</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="hl_login_password">
-        <item>
-         <widget class="QLabel" name="lb_login_password_icon">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="pixmap">
-           <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/key.png</pixmap>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lb_login_password">
-          <property name="text">
-           <string>Password:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="le_login_password"/>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-     <widget class="QLabel" name="lb_login_message">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>355</y>
-        <width>451</width>
-        <height>31</height>
+        <x>170</x>
+        <y>70</y>
+        <width>131</width>
+        <height>151</height>
        </rect>
       </property>
       <property name="text">
-       <string>Message</string>
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/logo_white_thumb.png</pixmap>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QLabel" name="lb_welcome">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>320</y>
-        <width>158</width>
-        <height>33</height>
+        <x>180</x>
+        <y>240</y>
+        <width>121</width>
+        <height>21</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="hl_login_buttons">
-       <item>
-        <widget class="QPushButton" name="pb_login_login">
-         <property name="text">
-          <string>Login</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pb_login_cancel">
-         <property name="text">
-          <string>Cancel</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <property name="text">
+       <string>-&gt;WELCOME &lt;-</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pg_login">
+     <widget class="QGroupBox" name="gb_login_frane">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>481</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <widget class="QGroupBox" name="gb_login">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>461</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Log in</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>451</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="hl_login_username">
+         <item>
+          <widget class="QLabel" name="lb_login_email_icon">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/mail_white_thumb.png</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lb_login_email">
+           <property name="text">
+            <string>Email:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="le_login_username"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>70</y>
+          <width>451</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="hl_login_password">
+         <item>
+          <widget class="QLabel" name="lb_login_password_icon">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/key_white_thumb.png</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lb_login_password">
+           <property name="text">
+            <string>Password:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="le_login_password"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>330</y>
+         <width>201</width>
+         <height>42</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="hl_login_buttons">
+        <item>
+         <widget class="QPushButton" name="pb_login_login">
+          <property name="text">
+           <string>Login</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../../App_icons/resource_icons.qrc">
+            <normaloff>:/buttons/success_white_thumb.png</normaloff>:/buttons/success_white_thumb.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pb_login_cancel">
+          <property name="text">
+           <string>Cancel</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../../App_icons/resource_icons.qrc">
+            <normaloff>:/buttons/cross_white_thumb.png</normaloff>:/buttons/cross_white_thumb.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>380</y>
+         <width>461</width>
+         <height>34</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="lb_login_message_icon">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/exclamation_mark_white_thumb.png</pixmap>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lb_login_message">
+          <property name="text">
+           <string>Message</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="pg_sign_in">
@@ -167,9 +257,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>10</y>
-        <width>471</width>
-        <height>401</height>
+        <y>0</y>
+        <width>481</width>
+        <height>421</height>
        </rect>
       </property>
       <property name="title">
@@ -186,7 +276,7 @@
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>441</width>
+         <width>461</width>
          <height>181</height>
         </rect>
        </property>
@@ -203,6 +293,16 @@
         <item>
          <layout class="QHBoxLayout" name="hl_register_fname">
           <item>
+           <widget class="QLabel" name="lb_register_fname_icon">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/user_white_thumb.png</pixmap>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLabel" name="lb_register_fname">
             <property name="text">
              <string>First name:</string>
@@ -216,6 +316,16 @@
         </item>
         <item>
          <layout class="QHBoxLayout" name="hl_register_lname">
+          <item>
+           <widget class="QLabel" name="lb_register_lname_icon">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/user_white_thumb.png</pixmap>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QLabel" name="lb_register_lname">
             <property name="text">
@@ -236,7 +346,7 @@
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/user.png</pixmap>
+             <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/mail_white_thumb.png</pixmap>
             </property>
            </widget>
           </item>
@@ -260,7 +370,7 @@
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/key.png</pixmap>
+             <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/key_white_thumb.png</pixmap>
             </property>
            </widget>
           </item>
@@ -283,7 +393,7 @@
         <rect>
          <x>10</x>
          <y>200</y>
-         <width>441</width>
+         <width>461</width>
          <height>111</height>
         </rect>
        </property>
@@ -305,7 +415,7 @@
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/question.png</pixmap>
+             <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/Q_white_thumb.png</pixmap>
             </property>
            </widget>
           </item>
@@ -324,6 +434,16 @@
         <item>
          <layout class="QHBoxLayout" name="hl_register_answer">
           <item>
+           <widget class="QLabel" name="lb_register_answer_icon">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/A_white_thumb.png</pixmap>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLabel" name="lb_register_answer">
             <property name="text">
              <string>Answer:</string>
@@ -337,26 +457,13 @@
         </item>
        </layout>
       </widget>
-      <widget class="QLabel" name="lb_register_message">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>360</y>
-         <width>451</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Message</string>
-       </property>
-      </widget>
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>280</x>
-         <y>320</y>
-         <width>158</width>
-         <height>33</height>
+         <x>270</x>
+         <y>330</y>
+         <width>201</width>
+         <height>42</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="hl_register_buttons">
@@ -365,12 +472,67 @@
           <property name="text">
            <string>Sign in</string>
           </property>
+          <property name="icon">
+           <iconset resource="../../App_icons/resource_icons.qrc">
+            <normaloff>:/buttons/success_white_thumb.png</normaloff>:/buttons/success_white_thumb.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="pb_register_cancel">
           <property name="text">
            <string>Cancel</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../../App_icons/resource_icons.qrc">
+            <normaloff>:/buttons/cross_white_thumb.png</normaloff>:/buttons/cross_white_thumb.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>380</y>
+         <width>461</width>
+         <height>34</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLabel" name="lb_register_message_icon">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/exclamation_mark_white_thumb.png</pixmap>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lb_register_message">
+          <property name="text">
+           <string>Message</string>
           </property>
          </widget>
         </item>
@@ -379,53 +541,230 @@
      </widget>
     </widget>
     <widget class="QWidget" name="pg_forgot">
-     <widget class="QGroupBox" name="gb_forgot_password">
+     <widget class="QGroupBox" name="gb_reset_password">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>461</width>
-        <height>271</height>
+        <x>10</x>
+        <y>0</y>
+        <width>481</width>
+        <height>421</height>
        </rect>
       </property>
       <property name="title">
-       <string>Reset password</string>
+       <string/>
       </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="">
+      <widget class="QGroupBox" name="gb_forgot_password">
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>30</y>
-         <width>441</width>
-         <height>31</height>
+         <y>10</y>
+         <width>461</width>
+         <height>271</height>
         </rect>
        </property>
-       <layout class="QHBoxLayout" name="hl_reset_email">
+       <property name="title">
+        <string>Reset password</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>451</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="hl_reset_email">
+         <item>
+          <widget class="QLabel" name="lb_reset_email_icon">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/user_white_thumb.png</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lb_reset_email">
+           <property name="text">
+            <string>Email:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="le_reset_email"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>130</y>
+          <width>451</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="hl_reset_answer">
+         <item>
+          <widget class="QLabel" name="lb_reset_answer_icon">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/A_white_thumb.png</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="le_reset_answer"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>180</y>
+          <width>451</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="hl_reset_new_pass">
+         <item>
+          <widget class="QLabel" name="lb_reset_new_pass_icon">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/key_white_thumb.png</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lb_reset_new_pass">
+           <property name="text">
+            <string>New password:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="le_reset_new_pass"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>220</y>
+          <width>451</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="hl_reset_repeat_pass">
+         <item>
+          <widget class="QLabel" name="lb_reset_repeat_pass_icon">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/key_white_thumb.png</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lb_reset_repeat_pass">
+           <property name="text">
+            <string>Repeat new password:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="le_reset_repeat_pass"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>451</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="lb_reset_question_icon">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/Q_white_thumb.png</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lb_reset_question">
+           <property name="text">
+            <string>question ??????????????????????????????????????</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>330</y>
+         <width>201</width>
+         <height>42</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QLabel" name="lb_reset_email_icon">
+         <widget class="QPushButton" name="pb_reset_login">
           <property name="text">
-           <string/>
+           <string>Login</string>
           </property>
-          <property name="pixmap">
-           <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/user.png</pixmap>
+          <property name="icon">
+           <iconset resource="../../App_icons/resource_icons.qrc">
+            <normaloff>:/buttons/success_white_thumb.png</normaloff>:/buttons/success_white_thumb.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="lb_reset_email">
+         <widget class="QPushButton" name="pb_reset_cancel">
           <property name="text">
-           <string>Email:</string>
+           <string>Cancel</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../../App_icons/resource_icons.qrc">
+            <normaloff>:/buttons/cross_white_thumb.png</normaloff>:/buttons/cross_white_thumb.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="le_reset_email"/>
         </item>
        </layout>
       </widget>
@@ -433,166 +772,37 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>120</y>
-         <width>441</width>
-         <height>31</height>
+         <y>380</y>
+         <width>461</width>
+         <height>34</height>
         </rect>
        </property>
-       <layout class="QHBoxLayout" name="hl_reset_answer">
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
-         <widget class="QLabel" name="lb_reset_answer_icon">
+         <widget class="QLabel" name="lb_reset_message_icon">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/A.png</pixmap>
+           <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/exclamation_mark_white_thumb.png</pixmap>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="lb_reset_answer">
+         <widget class="QLabel" name="lb_reset_message">
           <property name="text">
-           <string>Answer:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="le_reset_answer"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>180</y>
-         <width>441</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="hl_reset_new_pass">
-        <item>
-         <widget class="QLabel" name="lb_reset_new_pass_icon">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="pixmap">
-           <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/key.png</pixmap>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lb_reset_new_pass">
-          <property name="text">
-           <string>New password:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="le_reset_new_pass"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>220</y>
-         <width>441</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="hl_reset_repeat_pass">
-        <item>
-         <widget class="QLabel" name="lb_reset_repeat_pass_icon">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="pixmap">
-           <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/key.png</pixmap>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lb_reset_repeat_pass">
-          <property name="text">
-           <string>Repeat new password:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="le_reset_repeat_pass"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>90</y>
-         <width>441</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QLabel" name="lb_reset_question_icon">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="pixmap">
-           <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/question.png</pixmap>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lb_reset_question">
-          <property name="text">
-           <string>question ??????????????????????????????????????</string>
+           <string>Message</string>
           </property>
          </widget>
         </item>
        </layout>
       </widget>
-     </widget>
-     <widget class="QLabel" name="lb_reset_message">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>350</y>
-        <width>441</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Message</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="">
-      <property name="geometry">
-       <rect>
-        <x>310</x>
-        <y>300</y>
-        <width>158</width>
-        <height>33</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QPushButton" name="pb_reset_login">
-         <property name="text">
-          <string>Login</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pb_reset_cancel">
-         <property name="text">
-          <string>Cancel</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </widget>
     </widget>
    </widget>
@@ -602,7 +812,7 @@
       <x>10</x>
       <y>20</y>
       <width>121</width>
-      <height>411</height>
+      <height>421</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -614,14 +824,24 @@
     <widget class="QPushButton" name="pb_main_login">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>30</y>
-       <width>75</width>
-       <height>31</height>
+       <x>10</x>
+       <y>20</y>
+       <width>101</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="text">
       <string>log  in</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../App_icons/resource_icons.qrc">
+       <normaloff>:/buttons/existing_user_white_thumb.png</normaloff>:/buttons/existing_user_white_thumb.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
      </property>
     </widget>
     <widget class="QPushButton" name="pb_main_forgot_pass">
@@ -657,14 +877,24 @@ password?</string>
     <widget class="QPushButton" name="pb_main_sign_in">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>10</x>
        <y>70</y>
-       <width>75</width>
-       <height>31</height>
+       <width>101</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="text">
       <string>sign in</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../App_icons/resource_icons.qrc">
+       <normaloff>:/buttons/new_user_white_thumb.png</normaloff>:/buttons/new_user_white_thumb.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
      </property>
      <property name="autoDefault">
       <bool>false</bool>

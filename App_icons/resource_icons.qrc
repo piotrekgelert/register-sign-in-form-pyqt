@@ -3,18 +3,17 @@
     <file>admin_thumb.png</file>
   </qresource>
   <qresource prefix="buttons">
-    <file>A.png</file>
-    <file>Q.png</file>
-    <file>faq.png</file>
-    <file>question.png</file>
-    <file>key.png</file>
-    <file>cross_thumb.png</file>
-    <file>locked.png</file>
-    <file>logout.png</file>
-    <file>protection.png</file>
-    <file>refresh.png</file>
-    <file>success_thumb.png</file>
-    <file>user.png</file>
-    <file>unlocked.png</file>
+    <file>logo_white_thumb.png</file>
+    <file>existing_user_white_thumb.png</file>
+    <file>new_user_white_thumb.png</file>
+    <file>A_white_thumb.png</file>
+    <file>cross_white_thumb.png</file>
+    <file>exclamation_mark_white_thumb.png</file>
+    <file>key_white_thumb.png</file>
+    <file>mail_white_thumb.png</file>
+    <file>Q_white_thumb.png</file>
+    <file>refresh_white_thumb.png</file>
+    <file>success_white_thumb.png</file>
+    <file>user_white_thumb.png</file>
   </qresource>
 </RCC>

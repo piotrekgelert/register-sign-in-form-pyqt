@@ -6,3 +6,102 @@ import mysql.connector as mc
 import PyQt6.QtCore as qtc
 import PyQt6.QtGui as qtg
 import PyQt6.QtWidgets as qtw
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QWidget
+from UI.register_login_ui import Ui_lw_main
+
+
+class Main(qtw.QMainWindow, Ui_lw_main):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.setup_icons()
+
+        self.stackedWidget.setCurrentWidget(self.pg_welcome)
+        self.pb_main_login.clicked.connect(self.login_page)
+        self.pb_main_sign_in.clicked.connect(self.signin_page)
+        self.pb_main_forgot_pass.clicked.connect(self.forgot_page)
+    
+    def setup_icons(self):
+        root = r''.format(pathlib.Path(__file__).parent.absolute().parent)
+        main_path = os.path.join(root, 'App_icons')
+        
+        self.setWindowIcon(
+            qtg.QIcon('{}\\{}'.format(main_path, 'admin_thumb.png'))
+        )
+        set_icon = self._icon_set(main_path)
+        set_pixmap = self._pixmap_set(main_path)
+        
+        set_icon(self.pb_main_login, 'existing_user_white_thumb.png')
+        set_icon(self.pb_main_sign_in, 'new_user_white_thumb.png')
+        set_pixmap(self.lb_main_logo, 'logo_white_thumb.png')
+
+        set_pixmap(self.lb_login_email_icon, 'mail_white_thumb.png')
+        set_pixmap(self.lb_login_password_icon, 'key_white_thumb.png')
+        set_icon(self.pb_login_login, 'success_white_thumb.png')
+        set_icon(self.pb_login_cancel, 'cross_white_thumb.png')
+        set_pixmap(self.lb_login_message_icon, 'exclamation_mark_white_thumb.png')
+
+        set_pixmap(self.lb_register_fname_icon, 'user_white_thumb.png')
+        set_pixmap(self.lb_register_lname_icon, 'user_white_thumb.png')
+        set_pixmap(self.lb_register_email_icon, 'mail_white_thumb.png')
+        set_pixmap(self.lb_register_password_icon, 'key_white_thumb.png')
+        set_pixmap(self.lb_register_question_icon, 'Q_white_thumb.png')
+        set_pixmap(self.lb_register_answer_icon, 'A_white_thumb.png')
+        set_icon(self.pb_register_sign_up, 'success_white_thumb.png')
+        set_icon(self.pb_register_cancel, 'cross_white_thumb.png')
+        set_pixmap(self.lb_register_message_icon, 'exclamation_mark_white_thumb.png')
+        
+        set_pixmap(self.lb_reset_email_icon, 'mail_white_thumb.png')
+        set_pixmap(self.lb_reset_question_icon, 'Q_white_thumb.png')
+        set_pixmap(self.lb_reset_answer_icon, 'A_white_thumb.png')
+        set_pixmap(self.lb_reset_new_pass_icon, 'key_white_thumb.png')
+        set_pixmap(self.lb_reset_repeat_pass_icon, 'key_white_thumb.png')
+        set_icon(self.pb_reset_login, 'success_white_thumb.png')
+        set_icon(self.pb_reset_cancel, 'cross_white_thumb.png')
+        set_pixmap(self.lb_reset_message_icon, 'exclamation_mark_white_thumb.png')
+
+
+        # self.pb_main_login.setIcon(
+        
+        #     qtg.QIcon('{}\\{}'.format(main_path, 'existing_user_white_thumb.png'))
+        # )
+        # self.pb_main_sign_in.setIcon(
+        #     qtg.QIcon('{}\\{}'.format(main_path, 'new_user_white_thumb.png'))
+        # )
+        # self.lb_logo.setPixmap(
+        #     qtg.QPixmap('{}\\{}'.format(main_path, 'logo_white_thumb.png'))
+        # )
+        # 
+        #     
+
+    def _icon_set(self, path_main):
+        def f(pb, button_name):
+            return pb.setIcon(
+                qtg.QIcon('{}\\{}'.format(path_main, button_name))
+            )
+        return f
+    
+    def _pixmap_set(self, path_main):
+        def f(lb, label_name):
+            return lb.setPixmap(
+                qtg.QPixmap('{}\\{}'.format(path_main, label_name))
+            )
+        return f
+    
+    def login_page(self):
+        self.stackedWidget.setCurrentWidget(self.pg_login)
+
+    def signin_page(self):
+        self.stackedWidget.setCurrentWidget(self.pg_sign_in)
+
+    def forgot_page(self):
+        self.stackedWidget.setCurrentWidget((self.pg_forgot))
+
+
+
+if __name__ == '__main__':
+    app = qtw.QApplication(sys.argv)
+    window = Main()
+    window.show()
+    sys.exit(app.exec())
