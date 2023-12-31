@@ -12,6 +12,8 @@ from UI.register_login_ui import Ui_lw_main
 
 
 class Main(qtw.QMainWindow, Ui_lw_main):
+    sygnal  = bool()
+    
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -21,6 +23,7 @@ class Main(qtw.QMainWindow, Ui_lw_main):
         self.pb_main_login.clicked.connect(self.login_page)
         self.pb_main_sign_in.clicked.connect(self.signin_page)
         self.pb_main_forgot_pass.clicked.connect(self.forgot_page)
+        self.pb_register_sign_up.clicked.connect(self.process_signing_in)
     
     def setup_icons(self):
         root = r''.format(pathlib.Path(__file__).parent.absolute().parent)
@@ -96,8 +99,50 @@ class Main(qtw.QMainWindow, Ui_lw_main):
         self.stackedWidget.setCurrentWidget(self.pg_sign_in)
 
     def forgot_page(self):
-        self.stackedWidget.setCurrentWidget((self.pg_forgot))
+        self.stackedWidget.setCurrentWidget(self.pg_forgot)
+    
+    def logged_in_page(self):
+        self.stackedWidget.setCurrentWidget(self.pg_inside)
 
+    def process_signing_in(self):
+        if self.signal == True:
+            
+
+    
+    def process_sign_in(self):
+        try:
+            db = mc.connect(
+                host='localhost',
+                user='root',
+                password='',
+                database='people'
+            )
+            cursor = db.cursor()
+            fname = self.le_register_fname.text()
+            lname = self.le_register_lname.text()
+            email = self.le_register_email.text()
+            password = self.le_register_password.text()
+            question = self.le_register_question.text()
+            answer = self.le_register_answer.text()
+            if all(len(x) > 0 for x in (fname, lname, email, password, question, answer)):
+                query = 'INSERT INTO users (fname, lname, email, password, question, answer) VALUES (%s, %s, %s, %s, %s, %s)'
+                value = (fname, lname, email, password, question, answer)
+                cursor.execute(query, value)
+                db.commit()
+                self.lb_register_message.setText('Creating account succesfull')
+                self.signal = True
+                self.le_register_fname.clear()
+                self.le_register_lname.clear()
+                self.le_register_email.clear()
+                self.le_register_password.clear()
+                self.le_register_question.clear()
+                self.le_register_answer.clear()
+            else:
+                self.lb_register_message.setText('All fields are mandatory')
+                self.signal = False
+        except mc.Error as e:
+            print(e)
+            self.lb_register_message.setText('Creating account failed')
 
 
 if __name__ == '__main__':
