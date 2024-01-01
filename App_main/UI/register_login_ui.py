@@ -391,12 +391,6 @@ class Ui_lw_main(object):
         self.lb_reset_message.setObjectName("lb_reset_message")
         self.horizontalLayout_5.addWidget(self.lb_reset_message)
         self.stackedWidget.addWidget(self.pg_forgot)
-        self.pg_inside = QtWidgets.QWidget()
-        self.pg_inside.setObjectName("pg_inside")
-        self.label = QtWidgets.QLabel(parent=self.pg_inside)
-        self.label.setGeometry(QtCore.QRect(230, 180, 81, 21))
-        self.label.setObjectName("label")
-        self.stackedWidget.addWidget(self.pg_inside)
         self.frame = QtWidgets.QFrame(parent=self.centralwidget)
         self.frame.setGeometry(QtCore.QRect(10, 20, 121, 421))
         self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
@@ -430,7 +424,7 @@ class Ui_lw_main(object):
         lw_main.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(lw_main)
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(lw_main)
 
     def retranslateUi(self, lw_main):
@@ -462,7 +456,6 @@ class Ui_lw_main(object):
         self.pb_reset_login.setText(_translate("lw_main", "Login"))
         self.pb_reset_cancel.setText(_translate("lw_main", "Cancel"))
         self.lb_reset_message.setText(_translate("lw_main", "Message"))
-        self.label.setText(_translate("lw_main", "You are in"))
         self.pb_main_login.setText(_translate("lw_main", "log  in"))
         self.pb_main_forgot_pass.setText(_translate("lw_main", "Forgot\n"
 "your\n"

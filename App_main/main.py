@@ -12,7 +12,7 @@ from UI.register_login_ui import Ui_lw_main
 
 
 class Main(qtw.QMainWindow, Ui_lw_main):
-    sygnal  = bool()
+    one_sygnal = qtc.pyqtSignal()
     
     def __init__(self):
         super().__init__()
@@ -23,7 +23,8 @@ class Main(qtw.QMainWindow, Ui_lw_main):
         self.pb_main_login.clicked.connect(self.login_page)
         self.pb_main_sign_in.clicked.connect(self.signin_page)
         self.pb_main_forgot_pass.clicked.connect(self.forgot_page)
-        self.pb_register_sign_up.clicked.connect(self.process_signing_in)
+        
+        self.pb_register_sign_up.clicked.connect(self.process_sign_in)
     
     def setup_icons(self):
         root = r''.format(pathlib.Path(__file__).parent.absolute().parent)
@@ -101,14 +102,7 @@ class Main(qtw.QMainWindow, Ui_lw_main):
     def forgot_page(self):
         self.stackedWidget.setCurrentWidget(self.pg_forgot)
     
-    def logged_in_page(self):
-        self.stackedWidget.setCurrentWidget(self.pg_inside)
-
-    def process_signing_in(self):
-        if self.signal == True:
-            
-
-    
+    @qtc.pyqtSlot()
     def process_sign_in(self):
         try:
             db = mc.connect(
@@ -130,19 +124,20 @@ class Main(qtw.QMainWindow, Ui_lw_main):
                 cursor.execute(query, value)
                 db.commit()
                 self.lb_register_message.setText('Creating account succesfull')
-                self.signal = True
                 self.le_register_fname.clear()
                 self.le_register_lname.clear()
                 self.le_register_email.clear()
                 self.le_register_password.clear()
                 self.le_register_question.clear()
                 self.le_register_answer.clear()
+                self.one_sygnal.emit()
             else:
                 self.lb_register_message.setText('All fields are mandatory')
-                self.signal = False
         except mc.Error as e:
             print(e)
             self.lb_register_message.setText('Creating account failed')
+    
+    
 
 
 if __name__ == '__main__':

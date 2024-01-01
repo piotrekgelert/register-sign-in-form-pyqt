@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mw_logged_in</class>
+ <widget class="QMainWindow" name="mw_logged_in">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>573</width>
+    <height>334</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Comic Sans MS</family>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Logged_in_window</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <spacer name="verticalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QLabel" name="lb_main_logo">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="../../App_icons/resource_icons.qrc">:/buttons/logo_white_thumb.png</pixmap>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="lb_main_title">
+      <property name="text">
+       <string>-&gt;&gt; WELCOME INSIDE &lt;&lt;-</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="../../App_icons/resource_icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>
