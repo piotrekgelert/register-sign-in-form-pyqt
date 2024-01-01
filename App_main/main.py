@@ -25,6 +25,7 @@ class Main(qtw.QMainWindow, Ui_lw_main):
         self.pb_main_forgot_pass.clicked.connect(self.forgot_page)
         
         self.pb_register_sign_up.clicked.connect(self.process_sign_in)
+        self.pb_login_login.clicked.connect(self.process_log_in)
     
     def setup_icons(self):
         root = r''.format(pathlib.Path(__file__).parent.absolute().parent)
@@ -136,8 +137,34 @@ class Main(qtw.QMainWindow, Ui_lw_main):
         except mc.Error as e:
             print(e)
             self.lb_register_message.setText('Creating account failed')
+        
+    @qtc.pyqtSlot()
+    def process_log_in(self):
+        try:
+            db = mc.connect(
+                host = 'localhost',
+                user = 'root',
+                password = '',
+                database = 'people'
+            )
+            cursor = db.cursor()
+            email = self.le_login_username.text()
+            password = self.le_login_password.text()
+            query = "SELECT email, password, question from users WHERE email like  '" + email + "'and password like '" + password + "'"
+            cursor.execute(query)
+            user_data = cursor.fetchone()
+            if user_data is None:
+                print(user_data)
+                self.lb_login_message.setText('Incorrect email or password')
+            else:
+                self.one_sygnal.emit()
+                self.lb_login_message.setText('You are log in successfully')
+        except mc.Error as e:
+            print(e.msg)
+
+
     
-    
+
 
 
 if __name__ == '__main__':
