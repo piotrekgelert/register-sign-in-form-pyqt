@@ -3,6 +3,7 @@
     <file>admin_thumb.png</file>
   </qresource>
   <qresource prefix="buttons">
+    <file>question_thumb.png</file>
     <file>logo_white_thumb.png</file>
     <file>existing_user_white_thumb.png</file>
     <file>new_user_white_thumb.png</file>

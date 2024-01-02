@@ -13,6 +13,7 @@ from UI.register_login_ui import Ui_lw_main
 
 class Main(qtw.QMainWindow, Ui_lw_main):
     one_sygnal = qtc.pyqtSignal()
+    q = ''
     
     def __init__(self):
         super().__init__()
@@ -117,10 +118,15 @@ class Main(qtw.QMainWindow, Ui_lw_main):
             lname = self.le_register_lname.text()
             email = self.le_register_email.text()
             password = self.le_register_password.text()
+            dob_date = '{}/{}/{}'.format(
+                self.sb_register_dob_day.text(),
+                self.sb_register_dob_month.text(),
+                self.sb_register_dob_year.text()
+            )
             question = self.le_register_question.text()
             answer = self.le_register_answer.text()
-            if all(len(x) > 0 for x in (fname, lname, email, password, question, answer)):
-                query = 'INSERT INTO users (fname, lname, email, password, question, answer) VALUES (%s, %s, %s, %s, %s, %s)'
+            if all(len(x) > 0 for x in (fname, lname, email, password, dob_date, question, answer)):
+                query = 'INSERT INTO users (fname, lname, email, password, dob_date, question, answer) VALUES (%s, %s, %s, %s, %s, %s, %s)'
                 value = (fname, lname, email, password, question, answer)
                 cursor.execute(query, value)
                 db.commit()
@@ -161,6 +167,51 @@ class Main(qtw.QMainWindow, Ui_lw_main):
                 self.lb_login_message.setText('You are log in successfully')
         except mc.Error as e:
             print(e.msg)
+    
+    def process_forgot(self):
+        try:
+            db = mc.connect(
+                host = 'localhost',
+                user = 'root',
+                password = '',
+                database = 'people'
+            )
+            cursor_check = db.cursor()
+            fname, lname = self.lb_reset_name.text().split(' ')
+            dob_date = '{}/{}/{}'.format(
+                self.sb_reset_dob_day.text(),
+                self.sb_reset_dob_day.text(),
+                self.sb_reset_dob_day.text()
+            )
+            answer = self.le_reset_answer.text()
+            
+            q = 'SELECT users (fname, lname, dob_date, answer) VALUES (%s, %s, %s, %s)'
+            v = (fname, lname, dob_date, answer)
+            cursor_check.execute(q, v)
+            check_data = cursor_check.fetchone()
+            if check_data is None:
+                self.lb_reset_message.setText('Repeat process, somewhere is mistake')
+            else:
+                new_pass = self.le_reset_new_pass.text()
+                repeat_new_pass = self.le_reset_repeat_pass.text()
+                if new_pass == repeat_new_pass:
+                    cursor_change = db.cursor()
+                    cursor_change.execute(
+                        "UPDATE users SET password='%s' WHERE dob_date=%s", 
+                        (new_pass, dob_date))
+                    db.commit()
+                    self.one_sygnal.emit()
+                    self.lb_login_message.setText('You are log in successfully')
+
+                
+            # query = "SELECT dob_date, answer from users WHERE email like  '" +  dob_date + "' and answer like '" + answer +"'"
+        except mc.Error as e:
+            print(e.msg)
+            
+
+'''
+in database add column  -> dob_date
+'''
 
 
     

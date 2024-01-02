@@ -1,6 +1,8 @@
 # register-sign-in-form-pyqt
 Login form made with pyqt6
 
+email is treathed as an ID
+
 
 [Rutmer Zijlstra](https://www.flaticon.com/free-icons/password" title="password icons">Password icons created by Rutmer Zijlstra - Flaticon)
 [Ivan Repin]("https://www.flaticon.com/free-icons/question" title="question icons">Question icons created by Ivan Repin - Flaticon)
