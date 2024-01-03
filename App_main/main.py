@@ -28,7 +28,10 @@ class Main(qtw.QMainWindow, Ui_lw_main):
         self.pb_register_sign_up.clicked.connect(self.process_sign_in)
         self.pb_login_login.clicked.connect(self.process_log_in)
 
-        self.pb_reset_get_question.clicked.connect(self.process_forgot_get)
+        self.pb_reset_get_question.clicked.connect(
+            self.process_forgot_get_question
+            )
+        self.pb_reset_login.clicked.connect(self.process_forgot)
     
     def setup_icons(self):
         root = r''.format(pathlib.Path(__file__).parent.absolute().parent)
@@ -129,7 +132,8 @@ class Main(qtw.QMainWindow, Ui_lw_main):
             question = self.le_register_question.text()
             answer = self.le_register_answer.text()
             if all(len(x) > 0 for x in (fname, lname, email, password, dob_date, question, answer)):
-                query = 'INSERT INTO users (fname, lname, email, password, dob_date, question, answer) VALUES (%s, %s, %s, %s, %s, %s, %s)'
+                query = 'INSERT INTO users (fname, lname, email, password, dob_date, question, answer)'
+                'VALUES (%s, %s, %s, %s, %s, %s, %s)'
                 value = (fname, lname, email, password, dob_date, question, answer)
                 cursor.execute(query, value)
                 db.commit()
@@ -162,8 +166,9 @@ class Main(qtw.QMainWindow, Ui_lw_main):
             cursor = db.cursor()
             email = self.le_login_username.text()
             password = self.le_login_password.text()
-            query = "SELECT email, password, question from users WHERE email like  '" + email + "'and password like '" + password + "'"
-            cursor.execute(query)
+            q = "SELECT email, password FROM users WHERE email = %s AND password = %s"
+            v = (email, password)
+            cursor.execute(q, v)
             user_data = cursor.fetchone()
             if user_data is None:
                 print(user_data)
@@ -174,7 +179,7 @@ class Main(qtw.QMainWindow, Ui_lw_main):
         except mc.Error as e:
             print(e.msg)
     
-    def process_forgot_get(self):
+    def process_forgot_get_question(self):
         try:
             db = mc.connect(
                 host = 'localhost',
@@ -189,12 +194,17 @@ class Main(qtw.QMainWindow, Ui_lw_main):
                 self.sb_reset_dob_month.text(),
                 self.sb_reset_dob_year.text()
             )
-            q = 'select question from users where fname = %s and lname = %s and dob_date = %s'
-            v = (fname, lname, dob_date)  # , 
-            cursor_check.execute(q, v)
-            self.lb_reset_question.setText(cursor_check.fetchone()[0])
+            q = 'SELECT question FROM users WHERE fname = %s AND lname = %s AND dob_date = %s'
+            v = (fname, lname, dob_date)
+            check_data = cursor_check.fetchone()
+            if check_data is None:
+                self.lb_reset_message.setText('Somewhere is mistake')
+            else:
+                cursor_check.execute(q, v)
+                self.lb_reset_question.setText(check_data[0])
+
         except mc.Error as e:
-            print(e.msg)
+                print(e.msg)
     
     def process_forgot(self):
         try:
@@ -205,39 +215,38 @@ class Main(qtw.QMainWindow, Ui_lw_main):
                 database = 'people'
             )
             cursor_check = db.cursor()
-            fname, lname = self.lb_reset_name.text().split(' ')
+
+            answer = self.le_reset_answer.text()
             dob_date = '{}/{}/{}'.format(
                 self.sb_reset_dob_day.text(),
-                self.sb_reset_dob_day.text(),
-                self.sb_reset_dob_day.text()
+                self.sb_reset_dob_month.text(),
+                self.sb_reset_dob_year.text()
             )
-            answer = self.le_reset_answer.text()
-            
-            q = 'SELECT users (fname, lname, dob_date, answer) VALUES (%s, %s, %s, %s)'
-            v = (fname, lname, dob_date, answer)
-            cursor_check.execute(q, v)
+
+            cursor_check.execute(
+                "SELECT answer FROM users WHERE answer = %s", (answer, ))
             check_data = cursor_check.fetchone()
             if check_data is None:
-                self.lb_reset_message.setText('Repeat process, somewhere is mistake')
+                self.lb_reset_message.setText(
+                    'Repeat process, somewhere is mistake'
+                    )
             else:
                 new_pass = self.le_reset_new_pass.text()
                 repeat_new_pass = self.le_reset_repeat_pass.text()
                 if new_pass == repeat_new_pass:
                     cursor_change = db.cursor()
                     cursor_change.execute(
-                        "UPDATE users SET password='%s' WHERE dob_date=%s", 
+                        "UPDATE users SET password=%s WHERE dob_date=%s", 
                         (new_pass, dob_date))
                     db.commit()
                     self.one_sygnal.emit()
                     self.lb_login_message.setText('You are log in successfully')
-
-                
-            # query = "SELECT dob_date, answer from users WHERE email like  '" +  dob_date + "' and answer like '" + answer +"'"
+                else:
+                    self.lb_login_message.setText(
+                        'passwords have to be identical'
+                    )
         except mc.Error as e:
             print(e.msg)
-
-
-    
 
 
 
