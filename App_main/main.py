@@ -1,6 +1,7 @@
 import os
 import pathlib
 import sys
+import time
 
 import mysql.connector as mc
 import PyQt6.QtCore as qtc
@@ -13,7 +14,6 @@ from UI.register_login_ui import Ui_lw_main
 
 class Main(qtw.QMainWindow, Ui_lw_main):
     one_sygnal = qtc.pyqtSignal()
-    q = ''
     
     def __init__(self):
         super().__init__()
@@ -27,6 +27,8 @@ class Main(qtw.QMainWindow, Ui_lw_main):
         
         self.pb_register_sign_up.clicked.connect(self.process_sign_in)
         self.pb_login_login.clicked.connect(self.process_log_in)
+
+        self.pb_reset_get_question.clicked.connect(self.process_forgot_get)
     
     def setup_icons(self):
         root = r''.format(pathlib.Path(__file__).parent.absolute().parent)
@@ -58,11 +60,12 @@ class Main(qtw.QMainWindow, Ui_lw_main):
         set_icon(self.pb_register_cancel, 'cross_white_thumb.png')
         set_pixmap(self.lb_register_message_icon, 'exclamation_mark_white_thumb.png')
         
-        set_pixmap(self.lb_reset_email_icon, 'mail_white_thumb.png')
         set_pixmap(self.lb_reset_question_icon, 'Q_white_thumb.png')
         set_pixmap(self.lb_reset_answer_icon, 'A_white_thumb.png')
         set_pixmap(self.lb_reset_new_pass_icon, 'key_white_thumb.png')
         set_pixmap(self.lb_reset_repeat_pass_icon, 'key_white_thumb.png')
+        set_icon(self.pb_reset_get_question, 'question_thumb.png')
+        set_icon(self.pb_reset_get_cancel, 'cross_white_thumb.png')
         set_icon(self.pb_reset_login, 'success_white_thumb.png')
         set_icon(self.pb_reset_cancel, 'cross_white_thumb.png')
         set_pixmap(self.lb_reset_message_icon, 'exclamation_mark_white_thumb.png')
@@ -127,7 +130,7 @@ class Main(qtw.QMainWindow, Ui_lw_main):
             answer = self.le_register_answer.text()
             if all(len(x) > 0 for x in (fname, lname, email, password, dob_date, question, answer)):
                 query = 'INSERT INTO users (fname, lname, email, password, dob_date, question, answer) VALUES (%s, %s, %s, %s, %s, %s, %s)'
-                value = (fname, lname, email, password, question, answer)
+                value = (fname, lname, email, password, dob_date, question, answer)
                 cursor.execute(query, value)
                 db.commit()
                 self.lb_register_message.setText('Creating account succesfull')
@@ -137,6 +140,9 @@ class Main(qtw.QMainWindow, Ui_lw_main):
                 self.le_register_password.clear()
                 self.le_register_question.clear()
                 self.le_register_answer.clear()
+                self.sb_register_dob_day.clear()
+                self.sb_register_dob_month.clear()
+                self.sb_register_dob_year.clear()
                 self.one_sygnal.emit()
             else:
                 self.lb_register_message.setText('All fields are mandatory')
@@ -165,6 +171,28 @@ class Main(qtw.QMainWindow, Ui_lw_main):
             else:
                 self.one_sygnal.emit()
                 self.lb_login_message.setText('You are log in successfully')
+        except mc.Error as e:
+            print(e.msg)
+    
+    def process_forgot_get(self):
+        try:
+            db = mc.connect(
+                host = 'localhost',
+                user = 'root',
+                password = '',
+                database = 'people'
+            )
+            cursor_check = db.cursor()
+            fname, lname = self.le_reset_name.text().split(' ')
+            dob_date = '{}/{}/{}'.format(
+                self.sb_reset_dob_day.text(),
+                self.sb_reset_dob_month.text(),
+                self.sb_reset_dob_year.text()
+            )
+            q = 'select question from users where fname = %s and lname = %s and dob_date = %s'
+            v = (fname, lname, dob_date)  # , 
+            cursor_check.execute(q, v)
+            self.lb_reset_question.setText(cursor_check.fetchone()[0])
         except mc.Error as e:
             print(e.msg)
     
@@ -207,11 +235,6 @@ class Main(qtw.QMainWindow, Ui_lw_main):
             # query = "SELECT dob_date, answer from users WHERE email like  '" +  dob_date + "' and answer like '" + answer +"'"
         except mc.Error as e:
             print(e.msg)
-            
-
-'''
-in database add column  -> dob_date
-'''
 
 
     
