@@ -1,14 +1,11 @@
 import os
 import pathlib
 import sys
-import time
 
 import mysql.connector as mc
 import PyQt6.QtCore as qtc
 import PyQt6.QtGui as qtg
 import PyQt6.QtWidgets as qtw
-from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QWidget
 from UI.register_login_ui import Ui_lw_main
 
 
@@ -32,6 +29,10 @@ class Main(qtw.QMainWindow, Ui_lw_main):
             self.process_forgot_get_question
             )
         self.pb_reset_login.clicked.connect(self.process_forgot)
+        self.pb_login_cancel.clicked.connect(self.close)
+        self.pb_register_cancel.clicked.connect(self.close)
+        self.pb_reset_get_cancel.clicked.connect(self.close)
+        self.pb_reset_cancel.clicked.connect(self.close)
     
     def setup_icons(self):
         root = r''.format(pathlib.Path(__file__).parent.absolute().parent)
@@ -132,8 +133,9 @@ class Main(qtw.QMainWindow, Ui_lw_main):
             question = self.le_register_question.text()
             answer = self.le_register_answer.text()
             if all(len(x) > 0 for x in (fname, lname, email, password, dob_date, question, answer)):
-                query = 'INSERT INTO users (fname, lname, email, password, dob_date, question, answer)'
-                'VALUES (%s, %s, %s, %s, %s, %s, %s)'
+                query = '''INSERT INTO users 
+                (fname, lname, email, password, dob_date, question, answer)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)'''
                 value = (fname, lname, email, password, dob_date, question, answer)
                 cursor.execute(query, value)
                 db.commit()
@@ -148,10 +150,11 @@ class Main(qtw.QMainWindow, Ui_lw_main):
                 self.sb_register_dob_month.clear()
                 self.sb_register_dob_year.clear()
                 self.one_sygnal.emit()
+                self.close()
             else:
                 self.lb_register_message.setText('All fields are mandatory')
         except mc.Error as e:
-            print(e)
+            print(e.msg)
             self.lb_register_message.setText('Creating account failed')
         
     @qtc.pyqtSlot()
@@ -176,6 +179,7 @@ class Main(qtw.QMainWindow, Ui_lw_main):
             else:
                 self.one_sygnal.emit()
                 self.lb_login_message.setText('You are log in successfully')
+                self.close()
         except mc.Error as e:
             print(e.msg)
     
@@ -196,11 +200,11 @@ class Main(qtw.QMainWindow, Ui_lw_main):
             )
             q = 'SELECT question FROM users WHERE fname = %s AND lname = %s AND dob_date = %s'
             v = (fname, lname, dob_date)
+            cursor_check.execute(q, v)
             check_data = cursor_check.fetchone()
             if check_data is None:
                 self.lb_reset_message.setText('Somewhere is mistake')
             else:
-                cursor_check.execute(q, v)
                 self.lb_reset_question.setText(check_data[0])
 
         except mc.Error as e:
@@ -241,6 +245,7 @@ class Main(qtw.QMainWindow, Ui_lw_main):
                     db.commit()
                     self.one_sygnal.emit()
                     self.lb_login_message.setText('You are log in successfully')
+                    self.close()
                 else:
                     self.lb_login_message.setText(
                         'passwords have to be identical'

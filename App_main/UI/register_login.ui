@@ -40,7 +40,7 @@
      <enum>Qt::StrongFocus</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="pg_welcome">
      <widget class="QLabel" name="lb_main_logo">
@@ -289,13 +289,13 @@
        <property name="flat">
         <bool>true</bool>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>33</y>
           <width>451</width>
-          <height>30</height>
+          <height>34</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="hl_register_fname">
@@ -321,13 +321,13 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>69</y>
           <width>451</width>
-          <height>30</height>
+          <height>34</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="hl_register_lname">
@@ -353,13 +353,13 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>105</y>
           <width>451</width>
-          <height>30</height>
+          <height>34</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="hl_register_email">
@@ -385,13 +385,13 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>141</y>
           <width>451</width>
-          <height>30</height>
+          <height>34</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="hl_register_password">
@@ -436,7 +436,7 @@
        <property name="flat">
         <bool>true</bool>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>9</x>
@@ -468,7 +468,7 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>9</x>
@@ -500,7 +500,7 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>9</x>
@@ -712,7 +712,7 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>280</x>
@@ -758,7 +758,7 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -1008,6 +1008,12 @@
         <layout class="QHBoxLayout" name="hl_reset_question">
          <item>
           <widget class="QLabel" name="lb_reset_question_icon">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -1019,7 +1025,7 @@
          <item>
           <widget class="QLabel" name="lb_reset_question">
            <property name="text">
-            <string>question ??????????????????????????????????????</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -1133,30 +1139,36 @@ password?</string>
   </widget>
  </widget>
  <tabstops>
-  <tabstop>pb_login_login</tabstop>
-  <tabstop>le_login_password</tabstop>
-  <tabstop>le_register_fname</tabstop>
-  <tabstop>pb_login_cancel</tabstop>
-  <tabstop>pb_reset_get_question</tabstop>
-  <tabstop>le_register_lname</tabstop>
-  <tabstop>le_register_email</tabstop>
-  <tabstop>le_register_password</tabstop>
-  <tabstop>le_register_question</tabstop>
-  <tabstop>le_register_answer</tabstop>
   <tabstop>pb_main_login</tabstop>
-  <tabstop>pb_register_sign_up</tabstop>
-  <tabstop>pb_register_cancel</tabstop>
+  <tabstop>pb_main_sign_in</tabstop>
+  <tabstop>pb_main_forgot_pass</tabstop>
+  <tabstop>le_reset_name</tabstop>
+  <tabstop>sb_reset_dob_day</tabstop>
+  <tabstop>sb_reset_dob_month</tabstop>
+  <tabstop>sb_reset_dob_year</tabstop>
+  <tabstop>pb_reset_get_question</tabstop>
+  <tabstop>pb_reset_get_cancel</tabstop>
   <tabstop>le_reset_answer</tabstop>
   <tabstop>le_reset_new_pass</tabstop>
   <tabstop>le_reset_repeat_pass</tabstop>
   <tabstop>pb_reset_login</tabstop>
   <tabstop>pb_reset_cancel</tabstop>
+  <tabstop>le_register_fname</tabstop>
+  <tabstop>le_register_lname</tabstop>
+  <tabstop>le_register_email</tabstop>
+  <tabstop>le_register_password</tabstop>
+  <tabstop>sb_register_dob_day</tabstop>
+  <tabstop>sb_register_dob_month</tabstop>
+  <tabstop>sb_register_dob_year</tabstop>
+  <tabstop>le_register_question</tabstop>
+  <tabstop>le_register_answer</tabstop>
+  <tabstop>pb_register_sign_up</tabstop>
+  <tabstop>pb_register_cancel</tabstop>
   <tabstop>le_login_username</tabstop>
-  <tabstop>pb_main_forgot_pass</tabstop>
-  <tabstop>pb_main_sign_in</tabstop>
-  <tabstop>le_reset_name</tabstop>
+  <tabstop>le_login_password</tabstop>
+  <tabstop>pb_login_login</tabstop>
+  <tabstop>pb_login_cancel</tabstop>
   <tabstop>stackedWidget</tabstop>
-  <tabstop>pb_reset_get_cancel</tabstop>
  </tabstops>
  <resources>
   <include location="../../App_icons/resource_icons.qrc"/>

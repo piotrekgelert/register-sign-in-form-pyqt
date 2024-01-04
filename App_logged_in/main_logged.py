@@ -20,10 +20,19 @@ class MainLogged(qtw.QMainWindow, Ui_mw_logged_in):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.setup_icons()
 
         self.signal = Main()
         self.signal.one_sygnal.connect(self.show)
         self.signal.show()
+    
+    def setup_icons(self):
+        root = r''.format(pathlib.Path(__file__).parent.absolute().parent)
+        main_path = os.path.join(root, 'App_icons')
+        
+        self.setWindowIcon(
+            qtg.QIcon('{}\\{}'.format(main_path, 'admin_thumb.png'))
+        )
 
 
 
