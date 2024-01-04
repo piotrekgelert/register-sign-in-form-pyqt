@@ -1,5 +1,7 @@
+import hashlib
 import os
 import pathlib
+import re
 import sys
 
 import mysql.connector as mc
@@ -111,6 +113,12 @@ class Main(qtw.QMainWindow, Ui_lw_main):
     def forgot_page(self):
         self.stackedWidget.setCurrentWidget(self.pg_forgot)
     
+    def _hash_pass(self, passw:str):
+        h = hashlib.sha256()
+        h.update(passw.encode())
+        h_pass = h.hexdigest()
+        return h_pass
+
     @qtc.pyqtSlot()
     def process_sign_in(self):
         try:
@@ -121,23 +129,31 @@ class Main(qtw.QMainWindow, Ui_lw_main):
                 database='people'
             )
             cursor = db.cursor()
-            fname = self.le_register_fname.text()
-            lname = self.le_register_lname.text()
-            email = self.le_register_email.text()
-            password = self.le_register_password.text()
-            dob_date = '{}/{}/{}'.format(
-                self.sb_register_dob_day.text(),
-                self.sb_register_dob_month.text(),
-                self.sb_register_dob_year.text()
-            )
-            question = self.le_register_question.text()
-            answer = self.le_register_answer.text()
-            if all(len(x) > 0 for x in (fname, lname, email, password, dob_date, question, answer)):
-                query = '''INSERT INTO users 
-                (fname, lname, email, password, dob_date, question, answer)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)'''
-                value = (fname, lname, email, password, dob_date, question, answer)
-                cursor.execute(query, value)
+            personal_info = {
+                'fn': self.le_register_fname.text(),
+                'ln': self.le_register_lname.text(),
+                'em': self.le_register_email.text()\
+                    if re.findall(
+                        r'\w{1,}@\w{2,}\.\w{2,}',
+                        self.le_register_email.text()) else '',
+                'pas': self._hash_pass(self.le_register_password.text()),
+                'dob': '{}/{}/{}'.format(
+                        self.sb_register_dob_day.text(),
+                        self.sb_register_dob_month.text(),
+                        self.sb_register_dob_year.text()
+                        ),
+                'que': self.le_register_question.text(),
+                'ans': self.le_register_answer.text()
+                }
+
+            if all(len(x) > 0 for x in personal_info.values()):
+                cursor.execute(
+                    '''
+                    INSERT INTO users
+                    (fname, lname, email, password, dob_date, question, answer)
+                    VALUES (%(fn)s, %(ln)s, %(em)s, %(pas)s, %(dob)s, %(que)s, %(ans)s)
+                    ''', personal_info
+                )
                 db.commit()
                 self.lb_register_message.setText('Creating account succesfull')
                 self.le_register_fname.clear()
@@ -168,13 +184,12 @@ class Main(qtw.QMainWindow, Ui_lw_main):
             )
             cursor = db.cursor()
             email = self.le_login_username.text()
-            password = self.le_login_password.text()
+            password = self._hash_pass(self.le_login_password.text())
             q = "SELECT email, password FROM users WHERE email = %s AND password = %s"
             v = (email, password)
             cursor.execute(q, v)
             user_data = cursor.fetchone()
             if user_data is None:
-                print(user_data)
                 self.lb_login_message.setText('Incorrect email or password')
             else:
                 self.one_sygnal.emit()
@@ -235,8 +250,9 @@ class Main(qtw.QMainWindow, Ui_lw_main):
                     'Repeat process, somewhere is mistake'
                     )
             else:
-                new_pass = self.le_reset_new_pass.text()
-                repeat_new_pass = self.le_reset_repeat_pass.text()
+                new_pass = self._hash_pass(self.le_reset_new_pass.text())
+                repeat_new_pass = self._hash_pass(
+                    self.le_reset_repeat_pass.text())
                 if new_pass == repeat_new_pass:
                     cursor_change = db.cursor()
                     cursor_change.execute(

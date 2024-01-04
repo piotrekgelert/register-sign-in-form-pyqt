@@ -164,7 +164,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="le_login_password"/>
+          <widget class="QLineEdit" name="le_login_password">
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -242,11 +246,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="lb_login_message">
-          <property name="text">
-           <string>Message</string>
-          </property>
-         </widget>
+         <widget class="QLabel" name="lb_login_message"/>
         </item>
        </layout>
       </widget>
@@ -381,7 +381,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="le_register_email"/>
+          <widget class="QLineEdit" name="le_register_email">
+           <property name="placeholderText">
+            <string>eg. alan@gmol.com</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -413,7 +417,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="le_register_password"/>
+          <widget class="QLineEdit" name="le_register_password">
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -635,11 +643,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="lb_register_message">
-          <property name="text">
-           <string>Message</string>
-          </property>
-         </widget>
+         <widget class="QLabel" name="lb_register_message"/>
         </item>
        </layout>
       </widget>
@@ -881,11 +885,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="lb_reset_message">
-          <property name="text">
-           <string>Message</string>
-          </property>
-         </widget>
+         <widget class="QLabel" name="lb_reset_message"/>
         </item>
        </layout>
       </widget>
@@ -935,7 +935,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="le_reset_repeat_pass"/>
+          <widget class="QLineEdit" name="le_reset_repeat_pass">
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -967,7 +971,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="le_reset_new_pass"/>
+          <widget class="QLineEdit" name="le_reset_new_pass">
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -1060,7 +1068,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>log  in</string>
+      <string>log in</string>
      </property>
      <property name="icon">
       <iconset resource="../../App_icons/resource_icons.qrc">
