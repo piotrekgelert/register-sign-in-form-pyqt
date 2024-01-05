@@ -41,7 +41,7 @@ class Main(qtw.QMainWindow, Ui_lw_main):
         main_path = os.path.join(root, 'App_icons')
         
         self.setWindowIcon(
-            qtg.QIcon('{}\\{}'.format(main_path, 'admin_thumb.png'))
+            qtg.QIcon('{}\\{}'.format(main_path, 'settings.png'))
         )
         set_icon = self._icon_set(main_path)
         set_pixmap = self._pixmap_set(main_path)

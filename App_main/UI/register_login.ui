@@ -24,7 +24,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../../App_icons/resource_icons.qrc">
-    <normaloff>:/main/admin_thumb.png</normaloff>:/main/admin_thumb.png</iconset>
+    <normaloff>:/main/settings.png</normaloff>:/main/settings.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QStackedWidget" name="stackedWidget">

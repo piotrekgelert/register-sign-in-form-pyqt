@@ -19,7 +19,7 @@ class Ui_lw_main(object):
         font.setPointSize(12)
         lw_main.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/main/admin_thumb.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap(":/main/settings.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         lw_main.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(parent=lw_main)
         self.centralwidget.setObjectName("centralwidget")

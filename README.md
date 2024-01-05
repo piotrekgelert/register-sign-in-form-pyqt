@@ -1,30 +1,39 @@
 # register-sign-in-form-pyqt
-Login form made with pyqt6 in Python 3.87
+Full login system with login, sign up, create new password forms made with 
+pyqt6 in Python 3.87
 
 ## ui examples
 <p align="middle">
-  <img src="" width="400"/>
+  <img src="" width="300"/>
+  <img src="" width="300"/>
+  <img src="" width="300"/>
 </p>
 
 ### notes
-[x] uses XAMP and phpMyAdmin
-[x] password is encrypted with Hash
-[x] change password with DOB and your question
-email is treathed as an ID
+- [x] uses XAMP and phpMyAdmin
+- [x] password is encrypted with Hash
+- [x] to change password first name and DOB is needed, next answer the question
+- [x] email is treated as an ID
 
 ### icons created by:
-- [Rutmer Zijlstra](https://www.flaticon.com/free-icons/password" title="password icons">Password icons created by Rutmer Zijlstra - Flaticon)
-- [Ivan Repin]("https://www.flaticon.com/free-icons/question" title="question icons">Question icons created by Ivan Repin - Flaticon)
-- [Ivan Repin]("https://www.flaticon.com/free-icons/answer" title="answer icons">Answer icons created by Mayor Icons - Flaticon)
-- [Ivan Repin](https://www.flaticon.com/free-icons/qa" title="qa icons">Qa icons created by Mayor Icons - Flaticon)
-- [Creative Stall Premium](https://www.flaticon.com/free-icons/exclamation-mark" title="exclamation mark icons">Exclamation mark icons created by Creative Stall Premium - Flaticon)
+- [Ivan Repin](https://www.flaticon.com/authors/ivan-repin)
+- [Rutmer Zijlstra](https://www.flaticon.com/authors/rutmer-zijlstra)
+- [smashingstocks](https://www.flaticon.com/authors/smashingstocks)
+- [Creative Stall Premium](https://www.flaticon.com/authors/creative-stall-premium)
+- [Nsu Rabo Elijah](https://www.flaticon.com/authors/nsu-rabo-elijah)
+- [Roundicons](https://www.flaticon.com/authors/roundicons)
 
 ### used packages:
 [PyQt6 6.6.1](https://www.riverbankcomputing.com/software/pyqt/)
 
 
 ### running the project
-App opens from `App_main/main.py` file
+App can be opened from `App_main/main.py` file only to see it,
+or from `App_logged_in/main_logged_in.py` if you want to operate it, remember
+to start phpMyAdmin first and add:
+- database: 'people'
+- table: 'users'
+- columns: 'fname', 'lname', 'email', 'password', 'dob_date', 'question', 'answer'
 
 
 ### licence
